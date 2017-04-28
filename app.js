@@ -43,7 +43,10 @@ function getFromYoutube(searchTerm, callback, pageToken, channel) {
     type: 'video',
     maxResults: 6,
     pageToken: pageToken,
-    channelId: channel,
+  }
+
+  if (channel){
+    query.channelId = channel;
   }
   $.getJSON(YT_BASE_URL, query, callback);
 }
