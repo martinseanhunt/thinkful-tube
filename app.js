@@ -52,8 +52,6 @@ function getFromYoutube(searchTerm, callback, pageToken, channel) {
 }
 
 function processData(data) {
-  console.log(data);
-
   var itemTemplate = (
     '<div class="result">' +
       '<a href="#" class="js-lightbox"><img></a>' +
@@ -66,9 +64,7 @@ function processData(data) {
     resultsHTML = data.items.map(function(item){
       var itemHTML = $(itemTemplate);
       itemHTML.find('img').attr('src', item.snippet.thumbnails.medium.url);
-      itemHTML.find('a').attr('data-vid-id', item.id.videoId);
-      itemHTML.find('a').attr('data-channel-id', item.snippet.channelId);
-      itemHTML.find('a').attr('data-channel-name', item.snippet.channelTitle);
+      itemHTML.find('a').attr('data-vid-id', item.id.videoId).attr('data-channel-id', item.snippet.channelId).attr('data-channel-name', item.snippet.channelTitle);
       return itemHTML;
     });
   }
